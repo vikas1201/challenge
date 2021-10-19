@@ -5,11 +5,11 @@ import com.db.awmd.challenge.exception.DuplicateAccountIdException;
 
 public interface AccountsRepository {
 
-  void createAccount(Account account) throws DuplicateAccountIdException;
+	void createAccount(Account account) throws DuplicateAccountIdException;
 
-  Account getAccount(String accountId);
-  
-  void addOrUpdateAccount(String accountId,Account account);
+	Account getAccount(String accountId);
 
-  void clearAccounts();
+	void addOrUpdateAccount(String accountId, Account account);
+
+	void clearAccounts();
 }

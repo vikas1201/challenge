@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Data
 public class TransferMoney {
-	
+
 	@NotNull
 	@NotEmpty
 	private String accountFrom;
@@ -20,5 +20,5 @@ public class TransferMoney {
 	@NotNull
 	@Min(value = 0, message = "amount must be positive.")
 	private BigDecimal amount;
-	
+
 }

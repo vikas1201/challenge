@@ -17,30 +17,30 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class AccountsServiceTest {
 
-  @Autowired
-  private AccountsService accountsService;
+	@Autowired
+	private AccountsService accountsService;
 
-  @Test
-  public void addAccount() throws Exception {
-    Account account = new Account("Id-123");
-    account.setBalance(new BigDecimal(1000));
-    this.accountsService.createAccount(account);
+	@Test
+	public void addAccount() throws Exception {
+		Account account = new Account("Id-123");
+		account.setBalance(new BigDecimal(1000));
+		this.accountsService.createAccount(account);
 
-    assertThat(this.accountsService.getAccount("Id-123")).isEqualTo(account);
-  }
+		assertThat(this.accountsService.getAccount("Id-123")).isEqualTo(account);
+	}
 
-  @Test
-  public void addAccount_failsOnDuplicateId() throws Exception {
-    String uniqueId = "Id-" + System.currentTimeMillis();
-    Account account = new Account(uniqueId);
-    this.accountsService.createAccount(account);
+	@Test
+	public void addAccount_failsOnDuplicateId() throws Exception {
+		String uniqueId = "Id-" + System.currentTimeMillis();
+		Account account = new Account(uniqueId);
+		this.accountsService.createAccount(account);
 
-    try {
-      this.accountsService.createAccount(account);
-      fail("Should have failed when adding duplicate account");
-    } catch (DuplicateAccountIdException ex) {
-      assertThat(ex.getMessage()).isEqualTo("Account id " + uniqueId + " already exists!");
-    }
-  }
-  
+		try {
+			this.accountsService.createAccount(account);
+			fail("Should have failed when adding duplicate account");
+		} catch (DuplicateAccountIdException ex) {
+			assertThat(ex.getMessage()).isEqualTo("Account id " + uniqueId + " already exists!");
+		}
+	}
+
 }
